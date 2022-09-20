@@ -1,11 +1,14 @@
-Executable File  10 lines (10 sloc)  272 Bytes
 #!/usr/bin/python3
 def fizzbuzz():
     for i in range(1, 101):
-        if i % 3 == 0:
-            print("Fizz", end='')
-        if i % 5 == 0:
-            print("Buzz", end='')
-        if i % 3 and i % 5:
-            print("{:d}".format(i), end='')
-        print(end=' ')
+        if i % 5 == 0 and i % 3 == 0:
+            i = "FizzBuzz"
+            print("{:s} ".format(i), end="")
+        elif i % 5 == 0:
+            i = "Buzz"
+            print("{:s} ".format(i), end="")
+        elif i % 3 == 0:
+            i = "Fizz"
+            print("{:s} ".format(i), end="")
+        else:
+            print("{:d} ".format(i), end="")
