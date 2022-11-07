@@ -258,7 +258,7 @@ class TestBase_from_json_string(unittest.TestCase):
         list_output = Square.from_json_string(json_list_input)
         self.assertEqual(list_input, list_output)
 
-def test_from_json_string_two_squares(self):
+    def test_from_json_string_two_squares(self):
         list_input = [
             {"id": 89, "size": 10, "height": 4},
             {"id": 7, "size": 1, "height": 7}
@@ -493,7 +493,7 @@ class TestBase_load_from_file_csv(unittest.TestCase):
         except IOError:
             pass
 
-def test_load_from_file_csv_first_rectangle(self):
+    def test_load_from_file_csv_first_rectangle(self):
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 5, 6, 2)
         Rectangle.save_to_file_csv([r1, r2])
