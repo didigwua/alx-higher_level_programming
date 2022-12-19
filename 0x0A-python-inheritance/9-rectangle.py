@@ -1,36 +1,24 @@
 #!/usr/bin/python3
-"""
-Contains the class BaseGeometry and subclass Rectangle
-"""
-
-
-class BaseGeometry:
-    """A class with public instance methods area and integer_validator"""
-    def area(self):
-        """raises an exception when called"""
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """validates that value is an integer greater than 0"""
-        if type(value) is not int:
-            raise TypeError("{:s} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{:s} must be greater than 0".format(name))
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """A representation of a rectangle"""
+    """ sub class Rectangle that inherits from BaseGeometry
+        (based on 7-base_geometry.py). (task based on 8-rectangle.py)
+        width and height must be private. No getter or setter
+        must be positive integers, validated by integer_validator
+    """
     def __init__(self, width, height):
-        """instantiation of the rectangle"""
-        self.integer_validator("width", width)
+        """ constructor """
         self.__width = width
-        self.integer_validator("height", height)
         self.__height = height
+        self.integer_validator('width', width)
+        self.integer_validator('height', height)
 
     def area(self):
-        """returns the area of the rectangle"""
+        """ method """
         return self.__width * self.__height
 
     def __str__(self):
-        """informal string representation of the rectangle"""
-        return "[Rectangle] {:d}/{:d}".format(self.__width, self.__height)
+        """ method """
+        return ("[Rectangle] {:d}/{:d}".format(self.__width, self.__height))
