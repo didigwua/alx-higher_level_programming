@@ -1,60 +1,50 @@
 # 0x06. Python - Classes and Objects
-Foundations - Higher-level programming ― Python
+A project designed to give me a first hand experiece of class and objects
+in python programming. Made up of 0 - 6 mandatory tasks and some advanced
+tasks as follows:
+### 0. My first square
+An empty class Suare that defines a square
+### 1. Square with size
+A class Square that defines a square by: (based on 0-square.py)
+### 2. Size validation
+A class Square that defines a square by: (based on 1-square.py)
+### 3. Area of a square
+A class Square that defines a square by: (based on 2-square.py)
+### 4. Access and update private attribute
+A class Square that defines a square by: (based on 3-square.py)
+### 5. Printing a square
+A class Square that defines a square by: (based on 4-square.py)
+### 6. Coordinates of a square
+A class Square that defines a square by: (based on 5-square.py)
 
-###### :copyright: **[Holberton School](https://www.holbertonschool.com/)**
-by _Guillaume_
 
-## Learning Objectives
-###### Background Context
-OOP is a totally new concept for all of you (especially those who think they know about it :)). It’s VERY important that you read at least all the material that is listed bellow. As usual, make sure you type (never copy and paste), test, and understand all examples shown in the following links (including those in the video). The biggest and most important task of this project is the reading. The project itself will not take you more than 2-3 hours if you take the time to read and understand everything.
+## Advanced tasks
+7. Singly linked list
 
-Read or watch the below resources in the order presented.
-###### General
-* Why Python programming is awesome (don’t forget to tweet today, with the hashtag #pythoniscool :))
-* What is OOP
-* “first-class everything”
-* What is a class
-* What is an object and an instance
-* What is the difference between a class and an object or instance
-* What is an attribute
-* What are and how to use public, protected and private attributes
-* What is ```self```
-* What is a method
-* What is the special ```__init__``` method and how to use it
-* What is Data Abstraction, Data Encapsulation, and Information Hiding
-* What is a property
-* What is the difference between an attribute and a property in Python
-* What is the Pythonic way to write getters and setters in Python
-* How to dynamically create arbitrary new attributes for existing instances of a class
-* How to bind attributes to object and classes
-* What is and what does contain ```__dict__``` of a class and of an instance of a class
-* How does Python find the attributes of an object or class
-* How to use the ```getattr``` function
 
-## Resources
-* [Object Oriented Programming](https://python.swaroopch.com/oop.html)
-* [Object-Oriented Programming](https://www.python-course.eu/python3_object_oriented_programming.php)
-* [Properties vs. Getters and Setters](https://www.python-course.eu/python3_properties.php)
-* [Learn to Program 9 : Object Oriented Programming](https://www.youtube.com/watch?v=1AGyBuVCTeE&)
-* [Python Classes and Objects](https://www.youtube.com/watch?v=apACNr7DC_s)
-* [Object Oriented Programming](https://www.youtube.com/watch?v=-DP1i2ZU9gk)
-* [Example Google Style Python Docstrings](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+Write a class Node that defines a node of a singly linked list by:
+- Private instance attribute: data:
+  - property def data(self): to retrieve it
+  - property setter def data(self, value): to set it:
+     - data must be an integer, otherwise raise a TypeError exception with the message data must be an integer
+-Private instance attribute: next_node:
+	 - property def next_node(self): to retrieve it
+	 - property setter def next_node(self, value): to set it:
+	   - next_node can be None or must be a Node, otherwise raise a TypeError exception with the message next_node must be a Node object
+- Instantiation with data and next_node: def __init__(self, data, next_node=None):
 
-## Tasks
-* [x] 0. My first square
-* [x] 1. Square with size
-* [x] 2. Size validation
-* [x] 3. Area of a square
-* [x] 4. Access and update private attribute
-* [x] 5. Printing a square
-* [x] 6. Coordinates of a square
-* [ ] 7. Singly linked list
-* [ ] 8. Print Square instance
-* [ ] 9. Compare 2 squares
-* [ ] 10. ByteCode -> Python #5
 
-## Developer
-Javier Andrés Garzón Patarroyo
-- [website](https://tecnoayuda.co/)
-
-:man_technologist: :books: :computer: :globe_with_meridians:
+And a class SinglyLinkedList that defines a singly linked list by:
+- Private instance attribute: head (no setter or getter)
+- Simple instantiation: def __init__(self):
+- Should be printable:
+  - print the entire list in stdout
+  - one node number by line
+- Public instance method: def sorted_insert(self, value): that inserts a new Node into the correct sorted position in the list (increasing order)
+- You are not allowed to import any module
+8. Print Square instance  
+Write a class Square that defines a square by: (based on 6-square.py)
+9. Compare 2 squares  
+Write a class Square that defines a square by: (based on 4-square.py)
+10. ByteCode -> Python #5  
+Write the Python class MagicClass that does exactly the same as the following Python bytecode:

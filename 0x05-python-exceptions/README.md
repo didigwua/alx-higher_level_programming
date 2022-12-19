@@ -1,38 +1,25 @@
-# 0x05. Python - Exceptions
-Foundations - Higher-level programming ― Python
-
-###### :copyright: **[Holberton School](https://www.holbertonschool.com/)**
-by _Guillaume_
-
-## Learning Objectives
-* Why Python programming is awesome (don’t forget to tweet today, with the hashtag #pythoniscool :))
-* What’s the difference between errors and exceptions
-* What are exceptions and how to use them
-* When do we need to use exceptions
-* How to correctly handle an exception
-* What’s the purpose of catching exceptions
-* How to raise a builtin exception
-* When do we need to implement a clean-up action after an exception
-
-## Resources
-* [Errors and Exceptions](https://docs.python.org/3.4/tutorial/errors.html)
-* [Learn to Program 11 Static & Exception Handling](https://www.youtube.com/watch?v=7vbgD-3s-w4)
-
-## Tasks
-* [x] 0. Safe list printing
-* [x] 1. Safe printing of an integers list
-* [x] 2. Print and count integers
-* [x] 3. Integers division with debug
-* [x] 4. Divide a list
-* [x] 5. Raise exception
-* [x] 6. Raise a message
-* [ ] 7. Safe integer print with error message
-* [ ] 8. Safe function
-* [ ] 9. ByteCode -> Python #4
-* [ ] 10. CPython #2: PyFloatObject
-
-## Developer
-Javier Andrés Garzón Patarroyo
-- [website](https://tecnoayuda.co/)
-
-:man_technologist: :books: :computer: :globe_with_meridians:
+# 0x04. Python - Exceptions
+A project that was targeted at helping me gain the practical knowledge of
+the use of exception handlings in python programming, and solving problems
+with it, with an excellent understanding of the difference between Errors
+and Exceptions. It had seven mandatory tasks as follows:
+### 0. Safe list printing
+A function tha prints x elements of a list
+### 1. Safe printing of an integers list
+A function that prints an integer with "{:d}".format()
+### 2. Print and count integers
+A function that prints the first x elements of a list and only integers
+### 3. Integers division with debug
+A function that divides 2 integers and prints the result
+### 4. Divide a list
+A function that divides element 2 lists
+### 5. Raise exception
+A function that raises a type exception
+### 6. Raise a message
+A function that raises a name exception with a message
+## Advanced tasks
+7. Write a function that prints an integer
+8. Write a function that executes a function safely
+9. Write the Python function def magic_calculation(a, b): that does exactly the same as the following Python bytecode
+10 Create three C functions that print some basic info about Python lists, Python bytes an Python float objects
+###### The project had 0 contributor(s) as I worked alone

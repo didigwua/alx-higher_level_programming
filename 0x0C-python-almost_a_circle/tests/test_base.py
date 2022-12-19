@@ -1,116 +1,139 @@
 #!/usr/bin/python3
-""" shebang line - defines where the interpreter is located """
 import unittest
-"""
-    unittest — Unit testing framework
-    tests for class Base
-"""
+from models.square import Square
+import sys
+from io import StringIO
 import pep8
 from models.base import Base
+import json
 from models.rectangle import Rectangle
-from models.square import Square
+import os
+"""
+This module contains all unittest for Base class
+"""
 
-class verify_pep8(unittest.TestCase):
-    """ class - PEP 8 validated """
-    def test_pep8(self):
-        """ method - PEP 8 test """
-        check = pep8.Checker("models/base.py", show_source=True)
-        file_error= check.check_all()
 
-class verify_work(unittest.TestCase):
-    """ funcionality test """
-
+class TestBase(unittest.TestCase):
+    """
+    Class of functions to run tests
+    """
     def setUp(self):
-        """ Method called immediately before calling the test method """
-        Base._Base__nb_objects = 0
+        """
+        function to redirect stdout
+        """
+        sys.stdout = StringIO()
 
     def tearDown(self):
-        """ Method called immediately after calling the test method """
-        pass
+        """
+        cleans everything
+        """
+        sys.stdout = sys.__stdout__
 
-    def test_id_0main(self):
-        """ test 0-main cases """
+    def test_pep8_model(self):
+        """
+        Tests for pep8 model
+        """
+        p8 = pep8.StyleGuide(quiet=True)
+        p = p8.check_files(['models/base.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_pep8_test(self):
+        """
+        Tests for pep8 test
+        """
+        p8 = pep8.StyleGuide(quiet=True)
+        p = p8.check_files(['tests/test_models/test_base.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_docstrings(self):
+        self.assertIsNotNone(module_doc)
+        self.assertIsNotNone(Base.__doc__)
+        self.assertIs(hasattr(Base, "__init__"), True)
+        self.assertIsNotNone(Base.__init__.__doc__)
+        self.assertIs(hasattr(Base, "create"), True)
+        self.assertIsNotNone(Base.create.__doc__)
+        self.assertIs(hasattr(Base, "to_json_string"), True)
+        self.assertIsNotNone(Base.to_json_string.__doc__)
+        self.assertIs(hasattr(Base, "from_json_string"), True)
+        self.assertIsNotNone(Base.from_json_string.__doc__)
+        self.assertIs(hasattr(Base, "save_to_file"), True)
+        self.assertIsNotNone(Base.save_to_file.__doc__)
+        self.assertIs(hasattr(Base, "load_from_file"), True)
+        self.assertIsNotNone(Base.load_from_file.__doc__)
+
+    def test_id(self):
+        """
+        Test check for id 
+        """
+        Base._Base__nb_objects = 0
         b1 = Base()
-        self.assertEqual(b1.id, 1)
         b2 = Base()
-        self.assertEqual(b2.id, 2)
         b3 = Base()
-        self.assertEqual(b3.id, 3)
-        b4 = Base(89)
-        self.assertEqual(b4.id, 89)
+        b4 = Base(12)
         b5 = Base()
+        self.assertEqual(b1.id, 1)
+        self.assertEqual(b2.id, 2)
+        self.assertEqual(b3.id, 3)
+        self.assertEqual(b4.id, 12)
         self.assertEqual(b5.id, 4)
 
-    def test_id_empty(self):
-        """ test empty case """
-        self.b1 = Base()
-        self.assertEqual(self.b1.id, 1)
+    def test_from_json_string(self):
+        """
+        Test check from json string
+        """
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        with self.subTest():
+            r1 = Rectangle(10, 7, 2, 8, 1)
+            r1_dict = r1.to_dictionary()
+            json_dict = Base.to_json_string([r1_dict])
+            self.assertEqual(r1_dict, {'x': 2, 'width': 10,
+                                       'id': 1, 'height': 7,
+                                       'y': 8})
+            self.assertIs(type(r1_dict), dict)
+            self.assertIs(type(json_dict), str)
+            self.assertEqual(json.loads(json_dict), json.loads('[{"x": 2, '
+                                                               '"width": 10, '
+                                                               '"id": 1, '
+                                                               '"height": 7, '
+                                                               '"y": 8}]'))
 
-    def test_id_int(self):
-        """ test integer case """
-        self.b1 = Base(1)
-        self.assertEqual(self.b1.id, 1)
+    def test_rectangle(self):
+        """
+        Test check for rectangle
+        """
+        R1 = Rectangle(4, 5, 6)
+        R1_dict = R1.to_dictionary()
+        R2 = Rectangle.create(**R1_dict)
+        self.assertNotEqual(R1, R2)
 
-    def test_id_zero(self):
-        """ test zero case """
-        self.b1 = Base(0)
-        self.assertEqual(self.b1.id, 0)
+    def test_square(self):
+        """
+        Test check for square creation
+        """
+        S1 = Square(44, 55, 66, 77)
+        S1_dict = S1.to_dictionary()
+        S2 = Rectangle.create(**S1_dict)
+        self.assertNotEqual(S1, S2)
 
-    def test_id_neg(self):
-        """ test negative case """
-        self.b1 = Base(-1)
-        self.assertEqual(self.b1.id, -1)
+    def test_file_rectangle(self):
+        """
+        Test check if file loads from rectangle
+        """
+        R1 = Rectangle(33, 34, 35, 26)
+        R2 = Rectangle(202, 2)
+        lR = [R1, R2]
+        Rectangle.save_to_file(lR)
+        lR2 = Rectangle.load_from_file()
+        self.assertNotEqual(lR, lR2)
 
-    def test_id_float(self):
-        """ test the float case """
-        self.b1 = Base(1.2)
-        self.assertEqual(self.b1.id, 1.2)
-
-    def test_id_str(self):
-        """ test string case """
-        self.b1 = Base("testing")
-        self.assertEqual(self.b1.id, "testing")
-
-    def test_id_list(self):
-        """ test list case """
-        self.b1 = Base([1, 2, 3])
-        self.assertEqual(self.b1.id, [1, 2, 3])
-
-    def test_id_tup(self):
-        """ test tuple case """
-        self.b1 = Base((1, 2, 3))
-        self.assertEqual(self.b1.id, (1, 2, 3))
-
-    def test_id_dict(self):
-        """ test dictionary case """
-        self.b1 = Base({'a': 1, 'b': 2})
-        self.assertEqual(self.b1.id, {'a': 1, 'b': 2})
-
-    def test_serialization(self):
-        """ convert from python to jason """
-        p0 = None
-        j0 = Base.to_json_string(p0)
-        self.assertEqual(j0, "[]")
-        self.assertEqual(type(j0), str)
-
-        p1 = []
-        j1 = Base.to_json_string(p1)
-        self.assertEqual(j1, "[]")
-        self.assertEqual(type(j1), str)
-
-        p2 = [{}]
-        j2 = Base.to_json_string(p2)
-        self.assertEqual(j2, "[{}]")
-        self.assertEqual(type(j2), str)
-
-        p3 = [{'x': 1, 'y': 2}]
-        j3 = Base.to_json_string(p3)
-        st = str(p3)
-        self.assertEqual(j3, st.replace("'", "\""))
-        self.assertEqual(type(j3), str)
-
-        p4 = [{'x': 1, 'y': 2}, {'a': 3, 'b': 4}]
-        j4 = Base.to_json_string(p4)
-        st = str(p4)
-        self.assertEqual(j4, st.replace("'", "\""))
-        self.assertEqual(type(j4), str)
+    def test_file_square(self):
+        """
+        Test check if file loads from square
+        """
+        S1 = Square(22)
+        S2 = Square(44, 44, 55, 66)
+        lS = [S1, S2]
+        Square.save_to_file(lS)
+        lS2 = Square.load_from_file()
+        self.assertNotEqual(lS, lS2)

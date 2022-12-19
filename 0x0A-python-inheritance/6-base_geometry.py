@@ -1,6 +1,13 @@
 #!/usr/bin/python3
-class BaseGeometry:
-    """ class BaseGeometry (based on 5-base_geometry.py). """
+"""
+Contains definition of the class BaseGeometry
+"""
+
+
+class BaseGeometry():
+    """Definition of class BaseGeometry"""
+
     def area(self):
-        """ Public instance method """
+        """Definition of area method.
+           Raises an Exception with message 'area() is not implemented'"""
         raise Exception("area() is not implemented")

@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-for i in range(ord('z'), ord('a') - 1, -1):
-    if i % 2 == 0:
-        j = 0
-    else:
-        j = 1
-    print("{:s}".format(chr(i - (32 * j))), end="")
+i = 122
+while i >= 97:
+    flag = 0
+    if i % 2 != 0:
+        i = i - 32
+        flag = 1
+    print("{:s}".format(chr(i)), end="")
+    if flag == 1:
+        i = i + 32
+    i = i - 1
