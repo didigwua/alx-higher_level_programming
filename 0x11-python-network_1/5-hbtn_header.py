@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-# Task 5. Response header value #1
+"""Python script that takes in a URL, sends
+a request to the URL and displays the value of
+the variable X-Request-Id in the response header."""
+
+import requests
+from sys import argv
+
 if __name__ == "__main__":
-    import sys
-    import requests
-    the_url = sys.argv[1]
-    my_req = requests.get(the_url)
-    print("{}".format(my_req.headers.get("X-Request-Id")))
+    print(requests.get(argv[1]).headers.get("X-Request-Id"))

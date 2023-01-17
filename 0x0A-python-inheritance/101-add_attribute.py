@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""Module for add_attribute method"""
+"""add_attribute module.
+
+Contains function that checks.
+"""
 
 
 def add_attribute(obj, name, value):
-    """Method for checking and adding new attribute"""
-
-    if hasattr(obj, "__dict__") or \
-       (hasattr(obj, "__slots__") and name in obj.__slots__):
-        setattr(obj, name, value)
-    else:
+    """Adds a new attribute to an object if it’s possible."""
+    if not hasattr(obj, '__dict__'):
         raise TypeError("can't add new attribute")
+    setattr(obj, name, value)

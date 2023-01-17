@@ -1,3 +1,7 @@
-$.get('https://fourtonfish.com/hellosalut/?lang=fr', function (fetch) {
-  $('#hello').text(fetch.hello);
+const url = 'https://fourtonfish.com/hellosalut/?lang=fr';
+
+$(this).ready(function () {
+  $.getJSON(url, function (data) {
+    $('DIV#hello').text(data.hello);
+  });
 });

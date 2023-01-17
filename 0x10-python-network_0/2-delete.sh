@@ -1,3 +1,3 @@
 #!/bin/bash
-# cURL - Method
-curl -sX DELETE "$1"
+# Displays the body of the response of a curl DELETE request
+curl -sLX DELETE "$1"

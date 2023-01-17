@@ -1,3 +1,3 @@
 #!/bin/bash
-# 7. Only status code
-curl -s -o /dev/null -w "%{http_code}" "$1"
+# Displays the size of the status code of the response of a curl request
+curl -so /dev/null -w '%{http_code}' "$1"

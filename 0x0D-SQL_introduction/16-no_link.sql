@@ -1,2 +1,4 @@
--- script that lists all records of the table second_table of the database hbtn_0c_0 in your MySQL server.
-SELECT score, name FROM second_table WHERE name IS NOT NULL ORDER BY score DESC;
+-- Lists all records in the table second_table of the current database.
+-- Result should display the score and the name, ordered by score.
+
+SELECT `score`, `name` FROM `second_table` WHERE `name` IS NOT NULL ORDER BY `score` DESC;

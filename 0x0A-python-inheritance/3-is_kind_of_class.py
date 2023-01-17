@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-''' module: 2-is_same_class
-'''
+"""is_kind_of_class module.
+
+Contains function that compares an object with an instance.
+"""
 
 
 def is_kind_of_class(obj, a_class):
-    '''function: is_kind_of_class
-    obj: an object
-    a_class: a class
-    Returns: Bool
-    '''
+    """
+    Returns True if the object is an instance of, or if
+    the object is an instance of a class that inherited
+    from, the specified class ; otherwise False.
+    """
     return isinstance(obj, a_class)

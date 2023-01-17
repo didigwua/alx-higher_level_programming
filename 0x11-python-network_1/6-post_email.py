@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-# Task 6. POST an email #1
+"""Python script that takes in a URL and an email address,
+sends a POST request to the passed URL with the email as a
+parameter, and finally displays the body of the response."""
+
+import requests
+from sys import argv
+
 if __name__ == "__main__":
-    import sys
-    import requests
-    the_url = sys.argv[1]
-    the_email = {"email": sys.argv[2]}
-    my_req = requests.post(the_url, the_email)
-    body = my_req.text
-    print("{}".format(body))
+    print(requests.post(argv[1], data={'email': argv[2]}).text)

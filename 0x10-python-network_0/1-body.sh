@@ -1,3 +1,3 @@
 #!/bin/bash
-# cURL - to the end
+# Displays the body of the response of a curl request
 curl -sL "$1"

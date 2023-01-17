@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 def search_replace(my_list, search, replace):
-    return (list(map(lambda x: replace if x is search else x, my_list)))
+    return [replace if num == search else num for num in my_list]
